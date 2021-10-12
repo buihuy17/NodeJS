@@ -3,14 +3,15 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write \"src/**/*.{js,json,scss}\"",
+    // "beautiful": "prettier --single-quote --trailing-comma all --tab-width 4 --write \"src/**/*.{js,json,scss}\"",
     "start": "nodemon --inspect src/index.js",
     "watch": "node-sass --watch src/public/css/app.css src/resource/scss/app.scss ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/buihuy17/nodejs_blog.git"
+    "url": "git+https://github.com/buihuy17/nodejs_blog.git",
   },
   "keywords": [
     "blog1"
@@ -18,17 +19,23 @@
   "author": "buihuy",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/buihuy17/nodejs_blog/issues"
+    "url": "https://github.com/buihuy17/nodejs_blog/issues",
   },
   "homepage": "https://github.com/buihuy17/nodejs_blog#readme",
   "dependencies": {
     "express": "^4.17.1",
     "express-handlebars": "^5.3.4"
   },
-
   "lint-staged": {
-    "\"src/**/*.{js,json,scss}\"": "prettier --single-quote --trailing-comma all --tab-width 4 --write "
+    "\"src/**/*.{js,json,scss}\"": "prettier --single-quote --trailing-comma all --tab-width 4 --write ",
+    "*.{js,css,md}": "prettier --write"
   },
+
+"husky" : {
+  "hooks" : {
+    "pre-commit" : "lint-staged"
+  }
+},
 
   "devDependencies": {
     "husky": "^7.0.2",
